@@ -56,7 +56,7 @@ class ree extends eqLogic {
         
     }
     public function preSave() {
-         $this->setDisplay("width","400px");
+         $this->setDisplay("width","225px");
     }
     public function postSave() {
         $refresh = $this->getCmd(null, 'refresh');
@@ -78,8 +78,10 @@ class ree extends eqLogic {
                     $info->setLogicalId(self::$_horas[$x]);
                     $info->setEqLogic_id($this->getId());
                     $info->setType('info');
-                    //$info->setDisplay('title_placeholder', __('Options', __FILE__));
-			$info->setSubType('string');
+		    $info->setTemplate('dashboard', 'line');                    //$info->setDisplay('title_placeholder', __('Options', __FILE__));
+			$info->setTemplate('mobile', 'line');
+			$info->setUnite('€/KWh');
+			$info->setSubType('numeric');
                     $info->save();
         }
 		    $info = $this->getCmd(null, 'name');
@@ -141,7 +143,88 @@ class ree extends eqLogic {
     }
 	
     public function postUpdate() {
-        self::cronHourly($this->getId());// lance la fonction cronHourly
+       // self::cronHourly($this->getId());// lance la fonction cronHourly
+          $refresh = $this->getCmd(null, 'refresh');
+                if (!is_object($refresh)) {
+                        $refresh = new reeCmd();
+                        $refresh->setName(__('Rafraichir', __FILE__));
+                
+                $refresh->setEqLogic_id($this->getId());
+                $refresh->setLogicalId('refresh');
+                $refresh->setType('action');
+                $refresh->setSubType('other');
+                $refresh->save();}
+
+        for ($x = 0; $x <= 23; $x++) {
+                    $info = $this->getCmd(null, self::$_horas[$x]);
+                    if (!is_object($info)) {
+                            $info = new reeCmd();
+                            $info->setName(__(self::$_horas[$x], __FILE__));
+                    
+                    $info->setLogicalId(self::$_horas[$x]);
+                    $info->setEqLogic_id($this->getId());
+                    $info->setType('info');
+		    $info->setTemplate('dashboard', 'line');                    //$info->setDisplay('title_placeholder', __('Options', __FILE__));
+			$info->setTemplate('mobile', 'line');
+			$info->setUnite('€/KWh');
+			$info->setSubType('numeric');
+                    $info->save();}
+        }
+		    $info = $this->getCmd(null, 'name');
+                    if (!is_object($info)) {
+                            $info = new reeCmd();
+                            $info->setName(__('name', __FILE__));
+                    
+                    $info->setLogicalId('name');
+                    $info->setEqLogic_id($this->getId());
+                    $info->setType('info');
+                    $info->setSubType('string');
+                    $info->save();}
+		    
+		    $info = $this->getCmd(null, 'date');
+                    if (!is_object($info)) {
+                            $info = new reeCmd();
+                            $info->setName(__('date', __FILE__));
+                    
+                    $info->setLogicalId('date');
+                    $info->setEqLogic_id($this->getId());
+                    $info->setType('info');
+                    $info->setSubType('string');
+                    $info->save();}
+
+			$info1 = $this->getCmd(null, 'hour');
+                    if (!is_object($info1)) {
+                            $info1 = new reeCmd();
+                            $info1->setName(__('hour', __FILE__));
+                    
+                    $info1->setLogicalId('hour');
+                    $info1->setEqLogic_id($this->getId());
+                    $info1->setType('info');
+                    $info1->setSubType('string');
+                    $info1->save();}
+
+		    $info2 = $this->getCmd(null, 'cheaphour');
+                    if (!is_object($info2)) {
+                            $info2 = new reeCmd();
+                            $info2->setName(__('cheaphour', __FILE__));
+                    
+                    $info2->setLogicalId('cheaphour');
+                    $info2->setEqLogic_id($this->getId());
+                    $info2->setType('info');
+                    $info2->setSubType('string');
+                    $info2->save();}
+
+                $info3 = $this->getCmd(null, 'expensivehour');
+                if (!is_object($info3)) {
+                        $info3 = new reeCmd();
+                        $info3->setName(__('expensivehour', __FILE__));
+                
+                $info3->setLogicalId('expensivehour');
+                $info3->setEqLogic_id($this->getId());
+                $info3->setType('info');
+                $info3->setSubType('string');
+                $info3->save();}
+		self::cronHourly($this->getId());// lance la fonction cronHourly
     }
     public function preRemove() {
         
@@ -184,7 +267,7 @@ class reeCmd extends cmd {
                 //sumo 1 dÃ­a
                 $fecha_siguiente = date("Y-m-d",strtotime($fecha_actual."+ 1 days"));
 		$fecha_actual_hora = strtotime(date("Y-m-d H:i:00",time()));
-		$fecha_entrada_hora = strtotime($fecha_actual . "23:00:00");
+		$fecha_entrada_hora = strtotime($fecha_actual . "23:59:00");
 		if($fecha_actual_hora > $fecha_entrada_hora)
 		{
 			 $fecha_siguiente = date("Y-m-d",strtotime($fecha_actual."+ 1 days"));
