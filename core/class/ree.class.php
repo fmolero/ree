@@ -69,6 +69,7 @@ class ree extends eqLogic {
                 $refresh->setType('action');
                 $refresh->setSubType('other');
                 $refresh->save();
+
         for ($x = 0; $x <= 23; $x++) {
                     $info = $this->getCmd(null, self::$_horas[$x]);
                     if (!is_object($info)) {
@@ -78,10 +79,10 @@ class ree extends eqLogic {
                     $info->setLogicalId(self::$_horas[$x]);
                     $info->setEqLogic_id($this->getId());
                     $info->setType('info');
-		    $info->setTemplate('dashboard', 'line');                    //$info->setDisplay('title_placeholder', __('Options', __FILE__));
-			$info->setTemplate('mobile', 'line');
-			$info->setUnite('€/KWh');
-			$info->setSubType('numeric');
+		    $info->setTemplate('dashboard', 'line');
+		    $info->setTemplate('mobile', 'line');
+		    $info->setUnite('€/KWh');
+		    $info->setSubType('numeric');
                     $info->save();
         }
 		    $info = $this->getCmd(null, 'name');
@@ -113,7 +114,10 @@ class ree extends eqLogic {
                     $info1->setLogicalId('hour');
                     $info1->setEqLogic_id($this->getId());
                     $info1->setType('info');
-                    $info1->setSubType('string');
+		    $info1->setTemplate('dashboard', 'line');
+                    $info1->setTemplate('mobile', 'line');
+                    $info1->setUnite('€/KWh');
+                    $info1->setSubType('numeric');
                     $info1->save();
 
 		    $info2 = $this->getCmd(null, 'cheaphour');
@@ -200,7 +204,10 @@ class ree extends eqLogic {
                     $info1->setLogicalId('hour');
                     $info1->setEqLogic_id($this->getId());
                     $info1->setType('info');
-                    $info1->setSubType('string');
+                    $info1->setTemplate('dashboard', 'line');
+                    $info1->setTemplate('mobile', 'line');
+                    $info1->setUnite('€/KWh');
+                    $info1->setSubType('numeric');
                     $info1->save();}
 
 		    $info2 = $this->getCmd(null, 'cheaphour');
@@ -224,6 +231,7 @@ class ree extends eqLogic {
                 $info3->setType('info');
                 $info3->setSubType('string');
                 $info3->save();}
+		
 		self::cronHourly($this->getId());// lance la fonction cronHourly
     }
     public function preRemove() {
@@ -320,9 +328,9 @@ class reeCmd extends cmd {
                    $dataCmd->event($obj['indicator']['short_name']);
                    //$dataCmd->event($globalp1);
                    $dataCmd->save();
+
     		 $dataCmd = $reeObj->getCmd('info', 'date');
-                   $dataCmd->event($obj['indicator']['values'][0]['datetime']);
-                   //$dataCmd->event($globalp1);
+                   $dataCmd->event(substr($obj['indicator']['values'][0]['datetime'], 0, 10));
                    $dataCmd->save();
 
 		$dt = new DateTime();
@@ -337,13 +345,25 @@ class reeCmd extends cmd {
 		 reset($tarifa); //nos aseguramos de estar en el primer elemento ya ordenador del array que incluye las tarifas de todas las horas de$
                         //end($tarifa);
                         $dataCmd2 = $reeObj->getCmd('info', 'cheaphour'); //incluimos un elemento en el equipo con la hora mas barata del dia
-                        $dataCmd2->event(key($tarifa));
+                        if (key($tarifa) < 10) {
+				$cheaphour = "0" . key($tarifa);
+			}else 
+			{
+				$cheaphour = key($tarifa);
+			}
+			$dataCmd2->event($cheaphour . "h");
                         $dataCmd2->save();
 
                         reset($tarifa);//nos aseguramos de estar en el primer elemento ya ordenador del array que incluye las tarifas de todas las horas del$
                         end($tarifa);//nos vamos al ultimo elemento del array de tarifas y por tanto a la hora mas cara del dia
                         $dataCmd3 = $reeObj->getCmd('info', 'expensivehour');
-                        $dataCmd3->event(key($tarifa));
+                        if (key($tarifa) < 10) {
+                                $expensivehour = "0" . key($tarifa);
+                        }else
+                        {
+                                $expensivehour = key($tarifa);
+                        }
+			$dataCmd3->event($expensivehour . "h");
                         $dataCmd3->save();
 
     }
