@@ -1,0 +1,48 @@
+{
+    "plugins\/ree\/desktop\/php\/ree.php": {
+        "401 - Accès non autorisé": "401 - Acceso no autorizado",
+	"Ajouter un équipement": "Agregar un dispositivo",
+        "Rechercher": "Buscar",
+        "Mes équipement": "Mis dispositivos",
+	"Gestion": "Gestión",
+	"Ajouteur": "Añadir",
+        "Configuration": "Configuración",
+	"Mes templates": "Mis plantillas",
+	"Sauvegarder": "Guardar",
+        "Supprimer": "Borrar",
+        "Configuration avancée": "Configuración avanzada",
+        "Equipement": "Dispositivo",
+        "Commandes": "Ordenes",
+        "Nom de l'équipement": "Nombre del dispositivo",
+        "Nom de l'équipement template": "Nombre del dispositivo plantilla",
+	"Objet parent": "Objeto padre",
+	"Aucun": "No",
+        "Catégorie": "Categoría",
+        "Activer": "Activar",
+        "Visible": "Visible",
+
+	"Taux": "Tarifa",
+	"PVPC": "PVPC",
+	"PVPC 2.0 DHA": "PVPC 2.0 DHA",
+	"PVPC 2.0 DHS": "PVPC 2.0 DHS",
+	"Nom": "Nombre",
+	"Type": "Tipo",
+	"Action": "Acción",
+
+        "Token": "Token",
+        "Nom": "Nombre",
+        "Valeur": "Valor",
+        "Options": "Opciones"
+    },
+    "plugins\/ree\/desktop\/js\/ree.js": {
+        "Nom": "Nombre",
+        "Visible": "Visible",
+        "Interactions": "Interacciones",
+        "Tester": "Prueba"
+    },
+    "plugins\/ree\/core\/class\/ree.class.php": {
+        "Message": "Mensaje",
+        "Expediteur": "Remitente",
+        "Tous": "Todos"
+    }
+}
