@@ -11,3 +11,5 @@ Por último, ya solo nos queda crear nuestro equipo y elegir de que tarifa quere
 - PVPC: Tarifa normal de precio voluntario pequeño consumidor.
 - PVPC 2.0 DHA: Tarifa con discriminación horaria de precio voluntario pequeño consumidor.
 - PVPC 2.0 DHS: Tarifa cn discriminación horaria coche eléctrico de precio voluntario pequeño consumidor.
+
+Se aceptan donaciones en https://www.paypal.me/fmolerot
