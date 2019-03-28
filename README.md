@@ -4,10 +4,6 @@ Plugin para Jeedom para la consulta diaria de los precios de las tarifas de la  
 Este plugin nos permitirá consultar de forma diaria las tarifas PVPC españolas, cuyos precios del día siguiente los da REE a través
 la API esios normalmente antes de las 22 horas de cada día.
 
-Una vez descargado el plugin solo tenemos que copiarlos en /var/www/html/plugins/ y darle los permisos adecuados.
-sudo chmod -R 775 ree
-sudo chown -R www-data:www-data ree
-
 Trás esto, podemos activar el plugin en Jeedom, dentro de la configuración del mismo necesitamos configurar el token personal que tenemos
 que solicitar a REE en la dirección consultasios@ree.es, la respuesta suele ser bastante rápida.
 
