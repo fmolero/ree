@@ -314,7 +314,7 @@ class reeCmd extends cmd {
                 curl_close($ch);
                 $obj=json_decode($response,true);
 		// Imprime el JSON en el log para poder consultarlo
-		log::add('ree', 'debug', 'prueba');
+		log::add('ree', 'debug', 'Datos json: ' . $obj);
                // On rÃ©cupÃ¨re l'Ã©quipement Ã  partir de l'identifiant fournit par la commande
                $reeObj = ree::byId($this->getEqlogic_id());
                // On rÃ©cupÃ¨re la commande 'data' appartenant Ã  l'Ã©quipement
