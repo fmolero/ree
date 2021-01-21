@@ -272,6 +272,9 @@ class reeCmd extends cmd {
 	        if ($this->getLogicalId() == 'refresh')
 	        {
                 $fecha_actual = date("Y-m-d");
+		//$eqConfig = $this->getConfigKey();
+                $token = config::byKey('param1', 'ree');
+                $eqLogic = $this->getEqLogic();
 		$selhora = $eqLogic->getConfiguration('hora');
                 //sumo 1 dÃ­a
                 $fecha_siguiente = date("Y-m-d",strtotime($fecha_actual."+ 1 days"));
@@ -289,8 +292,8 @@ class reeCmd extends cmd {
                 $ch = curl_init();
                 
                 //$eqConfig = $this->getConfigKey();
-                $token = config::byKey('param1', 'ree');
-                $eqLogic = $this->getEqLogic();
+                //$token = config::byKey('param1', 'ree');
+                //$eqLogic = $this->getEqLogic();
 		$seltaux = $eqLogic->getConfiguration('taux');
                 switch ($seltaux) {
  		 case "PVPC":
