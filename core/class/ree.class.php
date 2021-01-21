@@ -277,8 +277,8 @@ class reeCmd extends cmd {
                 $fecha_siguiente = date("Y-m-d",strtotime($fecha_actual."+ 1 days"));
 		$fecha_actual_hora = strtotime(date("Y-m-d H:i:00",time()));
 		/*$fecha_entrada_hora = strtotime($fecha_actual . "23:59:00");*/
-		/*$fecha_entrada_hora = strtotime($fecha_actual . $selhora);*/
-		$fecha_entrada_hora = strtotime($fecha_actual . "21:59:00");
+		$fecha_entrada_hora = strtotime($fecha_actual . $selhora);
+		/*$fecha_entrada_hora = strtotime($fecha_actual . "21:59:00");*/
 		if($fecha_actual_hora > $fecha_entrada_hora)
 		{
 			 $fecha_siguiente = date("Y-m-d",strtotime($fecha_actual."+ 1 days"));
