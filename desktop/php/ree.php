@@ -118,7 +118,19 @@ foreach (jeeObject::all() as $object) {
               </div>
 
             </div>
+     <div class="form-group">
 
+              <label class="col-sm-3 control-label">{{Hora Cambio Día}}</label>
+              <div class="col-sm-3">
+                <select id="sel_hora" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="hora">
+                  <option value="20:59:00">{{21 horas}}</option>
+		  <option value="21:59:00">{{22 horas}}</option>
+                  <option value="22:59:00">{{23 horas}}</option>
+                  <option value="23:59:00">{{00 horas}}</option>
+		 </select>
+              </div>
+
+            </div>
 </fieldset>
 </form>
 </div>

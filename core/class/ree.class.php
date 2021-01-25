@@ -272,10 +272,16 @@ class reeCmd extends cmd {
 	        if ($this->getLogicalId() == 'refresh')
 	        {
                 $fecha_actual = date("Y-m-d");
+		//$eqConfig = $this->getConfigKey();
+                $token = config::byKey('param1', 'ree');
+                $eqLogic = $this->getEqLogic();
+		$selhora = $eqLogic->getConfiguration('hora');
                 //sumo 1 dÃ­a
                 $fecha_siguiente = date("Y-m-d",strtotime($fecha_actual."+ 1 days"));
 		$fecha_actual_hora = strtotime(date("Y-m-d H:i:00",time()));
-		$fecha_entrada_hora = strtotime($fecha_actual . "23:59:00");
+		/*$fecha_entrada_hora = strtotime($fecha_actual . "23:59:00");*/
+		$fecha_entrada_hora = strtotime($fecha_actual . $selhora);
+		/*$fecha_entrada_hora = strtotime($fecha_actual . "21:59:00");*/
 		if($fecha_actual_hora > $fecha_entrada_hora)
 		{
 			 $fecha_siguiente = date("Y-m-d",strtotime($fecha_actual."+ 1 days"));
@@ -286,8 +292,8 @@ class reeCmd extends cmd {
                 $ch = curl_init();
                 
                 //$eqConfig = $this->getConfigKey();
-                $token = config::byKey('param1', 'ree');
-                $eqLogic = $this->getEqLogic();
+                //$token = config::byKey('param1', 'ree');
+                //$eqLogic = $this->getEqLogic();
 		$seltaux = $eqLogic->getConfiguration('taux');
                 switch ($seltaux) {
  		 case "PVPC":
@@ -313,6 +319,8 @@ class reeCmd extends cmd {
                 $response = curl_exec($ch);
                 curl_close($ch);
                 $obj=json_decode($response,true);
+		// Imprime el JSON en el log para poder consultarlo
+		log::add('ree', 'debug', 'Datos json: ' . print_r($response, True));
                // On rÃ©cupÃ¨re l'Ã©quipement Ã  partir de l'identifiant fournit par la commande
                $reeObj = ree::byId($this->getEqlogic_id());
                // On rÃ©cupÃ¨re la commande 'data' appartenant Ã  l'Ã©quipement
