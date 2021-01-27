@@ -1,2 +1,6 @@
 # ree
-Versión 0.1 Incluye todas las tarifas españolas del mercado regulado PVPC.
+- 0.2
+  - Añadimos la opción de elegir a que hora quieres que haga el cambio de día. Desde las 8:30 de la tarde, hasta las 12 de la noche. Por defecto, todos van a cambiar a las 23 hora.
+  
+- Versión 0.1 Incluye todas las tarifas españolas del mercado regulado PVPC.
+
