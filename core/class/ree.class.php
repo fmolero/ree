@@ -32,7 +32,7 @@ class ree extends eqLogic {
      */
     /*
      * Fonction exécutée automatiquement tous les jours par Jeedom */
-      public static function cronHourly() {
+      public static function cron30() {
 		 if ($_eqLogic_id == null) { // La fonction n’a pas d’argument donc on recherche tous les équipements du plugin
                         $eqLogics = self::byType('ree', true);
                 } else {// La fonction a l’argument id(unique) d’un équipement(eqLogic)
@@ -232,7 +232,7 @@ class ree extends eqLogic {
                 $info3->setSubType('string');
                 $info3->save();}
 		
-		self::cronHourly($this->getId());// lance la fonction cronHourly
+		self::cron30($this->getId());// lance la fonction cronHourly
     }
     public function preRemove() {
         
