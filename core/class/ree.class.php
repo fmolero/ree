@@ -363,7 +363,7 @@ class reeCmd extends cmd {
                }
 		
 	    	$dataCmd = $reeObj->getCmd('info', 'graph');
-                   $dataCmd->event('1234');
+                   $dataCmd->event($obj['indicator']['short_name']);
                    //$dataCmd->event($globalp1);
                    $dataCmd->save();
 	    
