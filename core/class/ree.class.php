@@ -151,7 +151,7 @@ class ree extends eqLogic {
                 $info4->setLogicalId('graph');
                 $info4->setEqLogic_id($this->getId());
                 $info4->setType('info');
-                $info4->setSubType('string');
+                $info4->setSubType('other');
                 $info4->save();
     }
     public function preUpdate() {
@@ -253,7 +253,7 @@ class ree extends eqLogic {
                 $info4->setLogicalId('graph');
                 $info4->setEqLogic_id($this->getId());
                 $info4->setType('info');
-                $info4->setSubType('string');
+                $info4->setSubType('other');
                 $info4->save();}
 		
 		self::cron30($this->getId());// lance la fonction cronHourly
@@ -362,10 +362,10 @@ class reeCmd extends cmd {
 	    	//$dataGraph->save();
                }
 		
-	    	/*$dataCmd = $reeObj->getCmd('info', 'graph');
+	    	$dataCmd = $reeObj->getCmd('info', 'graph');
                    $dataCmd->event($obj['indicator']['short_name']);
                    //$dataCmd->event($globalp1);
-                   $dataCmd->save();*/
+                   $dataCmd->save();
 	    
 	    	$dataCmd = $reeObj->getCmd('info', 'name');
                    $dataCmd->event($obj['indicator']['short_name']);
