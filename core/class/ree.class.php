@@ -362,12 +362,10 @@ class reeCmd extends cmd {
 	    	//$dataGraph->save();
                }
 		
-	    	//Objeto para manejar los datos de gráfico
-		$dataCmd = $reeObj->getCmd('info', 'graph');
-		$graph = "Prueba";
-		//grabamos los datos de gráfico
-	    	$dataCmd->event($graph);
-	    	$dataCmd->save();
+	    	$dataCmd = $reeObj->getCmd('info', 'graph');
+                   $dataCmd->event($obj['indicator']['short_name']);
+                   //$dataCmd->event($globalp1);
+                   $dataCmd->save();
 	    
 	    	$dataCmd = $reeObj->getCmd('info', 'name');
                    $dataCmd->event($obj['indicator']['short_name']);
