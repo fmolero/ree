@@ -363,7 +363,7 @@ class reeCmd extends cmd {
                }
 		
 	    	$dataCmd = $reeObj->getCmd('info', 'graph');
-	    	   //$graph = $graph . ($obj['indicator']['short_name']) . "," . substr($obj['indicator']['values'][0]['datetime'], 0, 10);
+	    	   $graph = $graph . ($obj['indicator']['short_name']) . "," . substr($obj['indicator']['values'][0]['datetime'], 0, 10);
                    $dataCmd->event($graph);
                    //$dataCmd->event($globalp1);
                    $dataCmd->save();
