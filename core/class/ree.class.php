@@ -141,6 +141,18 @@ class ree extends eqLogic {
                 $info3->setType('info');
                 $info3->setSubType('string');
                 $info3->save();
+	    
+	    	//Modificación para añdir gráfica
+	    	$info4 = $this->getCmd(null, 'graph');
+                if (!is_object($info4)) {
+                        $info4 = new reeCmd();
+                        $info4->setName(__('graph', __FILE__));
+                }
+                $info4->setLogicalId('graph');
+                $info4->setEqLogic_id($this->getId());
+                $info4->setType('info');
+                $info4->setSubType('string');
+                $info4->save();
     }
     public function preUpdate() {
         
@@ -231,6 +243,18 @@ class ree extends eqLogic {
                 $info3->setType('info');
                 $info3->setSubType('string');
                 $info3->save();}
+	    
+	    	//Modificaciín para añadir gráfica
+	    	$info4 = $this->getCmd(null, 'graph');
+                if (!is_object($info4)) {
+                        $info4 = new reeCmd();
+                        $info4->setName(__('graph', __FILE__));
+                
+                $info4->setLogicalId('graph');
+                $info4->setEqLogic_id($this->getId());
+                $info4->setType('info');
+                $info4->setSubType('string');
+                $info4->save();}
 		
 		self::cron30($this->getId());// lance la fonction cronHourly
     }
@@ -323,15 +347,23 @@ class reeCmd extends cmd {
 		log::add('ree', 'debug', 'Datos json: ' . print_r($response, True));
                // On rÃ©cupÃ¨re l'Ã©quipement Ã  partir de l'identifiant fournit par la commande
                $reeObj = ree::byId($this->getEqlogic_id());
+		//Objeto para manejar los datos de gráfico
+		$dataGraph = $reeObj->getCmd('info', 'graph');
+		$graph = "";
                // On rÃ©cupÃ¨re la commande 'data' appartenant Ã  l'Ã©quipement
                for ($x = 0; $x <= 23; $x++) {
-                   $dataCmd = $reeObj->getCmd('info', self::$_horas2[$x]);
+                   $graph = $graph . ($obj['indicator']['values'][$x]['value'] / 1000) . ", ";
+		   $dataCmd = $reeObj->getCmd('info', self::$_horas2[$x]);
                    $dataCmd->event($obj['indicator']['values'][$x]['value'] / 1000);
                    //$dataCmd->event($globalp1);
                    $dataCmd->save();
 			$tarifa[] = $obj['indicator']['values'][$x]['value'] / 1000;
                    }
                }
+	    	//grabamos los datos de gráfico
+	    	$datagraph->event($graph);
+	    	$datagraph->save();
+	    
 		$dataCmd = $reeObj->getCmd('info', 'name');
                    $dataCmd->event($obj['indicator']['short_name']);
                    //$dataCmd->event($globalp1);
