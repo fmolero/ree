@@ -352,7 +352,7 @@ class reeCmd extends cmd {
 		$graph = "";
 		// On rÃ©cupÃ¨re la commande 'data' appartenant Ã  l'Ã©quipement			
                for ($x = 0; $x <= 23; $x++) {
-		   $graph = $obj['indicator']['values'][$x]['value'] / 1000;
+		   $graph = $graph . "1,";
                    $dataCmd = $reeObj->getCmd('info', self::$_horas2[$x]);
                    $dataCmd->event($obj['indicator']['values'][$x]['value'] / 1000);
                    //$dataCmd->event($globalp1);
