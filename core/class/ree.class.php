@@ -347,10 +347,10 @@ class reeCmd extends cmd {
 		log::add('ree', 'debug', 'Datos json: ' . print_r($response, True));
                // On rÃ©cupÃ¨re l'Ã©quipement Ã  partir de l'identifiant fournit par la commande
                $reeObj = ree::byId($this->getEqlogic_id());
-               
+                $graph = "";
 		// On rÃ©cupÃ¨re la commande 'data' appartenant Ã  l'Ã©quipement			
                for ($x = 0; $x <= 23; $x++) {
-		   //$graph = $graph . "1,";
+		   $graph = $graph . ($obj['indicator']['values'][$x]['value'] / 1000) . ",";
                    $dataCmd = $reeObj->getCmd('info', self::$_horas2[$x]);
                    $dataCmd->event($obj['indicator']['values'][$x]['value'] / 1000);
                    //$dataCmd->event($globalp1);
@@ -363,7 +363,7 @@ class reeCmd extends cmd {
                }
 		
 	    	$dataCmd = $reeObj->getCmd('info', 'graph');
-                   $dataCmd->event($obj['indicator']['values'][1]['value'] / 1000);
+                   $dataCmd->event($graph);
                    //$dataCmd->event($globalp1);
                    $dataCmd->save();
 	    
