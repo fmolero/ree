@@ -362,11 +362,11 @@ class reeCmd extends cmd {
 	    	//$dataGraph->save();
                }
 		
-	    	/*$dataCmd = $reeObj->getCmd('info', 'graph');
-	    	   $graph = $graph . ($obj['indicator']['short_name']) . "," . substr($obj['indicator']['values'][0]['datetime'], 0, 10);
+	    	$dataCmd = $reeObj->getCmd('info', 'graph');
+	    	   //$graph = $graph . ($obj['indicator']['short_name']) . "," . substr($obj['indicator']['values'][0]['datetime'], 0, 10);
                    $dataCmd->event($graph);
                    //$dataCmd->event($globalp1);
-                   $dataCmd->save();*/
+                   $dataCmd->save();
 	    
 	    	$dataCmd = $reeObj->getCmd('info', 'name');
                    $dataCmd->event($obj['indicator']['short_name']);
