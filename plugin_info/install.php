@@ -20,7 +20,7 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function ree_install() {
     $fichero = '/../PLuz.html';
-    $nuevo_fichero = '/../../../data/CustomTemplates/dashboard/cmd.info.string.PLuz.html';
+    $nuevo_fichero = '/../../../data/customTemplates/dashboard/cmd.info.string.PLuz.html';
 
     if (!copy($fichero, $nuevo_fichero)) {
         echo "Error al copiar $fichero...\n";
@@ -30,7 +30,7 @@ function ree_install() {
 
 function ree_update() {
      $fichero = '/../PLuz.html';
-    $nuevo_fichero = '/../../../data/CustomTemplates/dashboard/cmd.info.string.PLuz.html';
+    $nuevo_fichero = '/../../../data/customTemplates/dashboard/cmd.info.string.PLuz.html';
 
     if (!copy($fichero, $nuevo_fichero)) {
         echo "Error al copiar $fichero...\n";
