@@ -1,0 +1,43 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<div id="container"></div>
+<style>
+  #container {
+  min-width: 310px;
+  max-width: 800px;
+  height: 400px;
+  margin: 0 auto;
+}
+</style>
+<script>
+  
+Highcharts.chart('container', {
+  chart: {
+    events: {
+      load: function() {
+        var series = this.series[0];
+        series.points[series.yData.indexOf(series.dataMin)].update({
+          color: 'green'
+        });
+        series.points[series.yData.indexOf(series.dataMax)].update({
+          color: 'red'
+        });
+      }
+    }
+  },
+  title: {
+    text: 'Tarifa precio de la luz'
+  },
+  subtitle: {
+    text: 'Fuente: Red Electrica España'
+  },
+  xAxis: {
+   categories: ['00h','01h', '02h', '03h', '04h', '05h', '06h', '07h', '08h', '09h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h']
+  },
+  series: [{
+    name: 'Precio KWh',
+    type: 'column',
+    data: [#state#]
+  }]
+});
+</script>
