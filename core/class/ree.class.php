@@ -151,7 +151,7 @@ class ree extends eqLogic {
                 $info4->setLogicalId('graph');
                 $info4->setEqLogic_id($this->getId());
                 $info4->setType('info');
-	        $info4->setTemplate('dashboard', 'Ree');
+	        //$info4->setTemplate('dashboard', 'Ree');
                 $info4->setSubType('string');
                 $info4->save();
     }
@@ -254,7 +254,7 @@ class ree extends eqLogic {
                 $info4->setLogicalId('graph');
                 $info4->setEqLogic_id($this->getId());
                 $info4->setType('info');
-		$info4->setTemplate('dashboard', 'Ree');
+		//$info4->setTemplate('dashboard', 'Ree');
                 $info4->setSubType('string');
                 $info4->save();}
 		
