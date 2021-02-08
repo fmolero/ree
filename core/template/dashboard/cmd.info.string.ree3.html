@@ -6,7 +6,7 @@
   var mondiv= document.getElementById("mdiv");
   jeedom.cmd.execute({ id: '712',
         success:  function(resultat) {          
-         mondiv.innerHTML= resultat;
+         mondiv= resultat.toString();
    }
 });
   jeedom.cmd.update['#id#'] = function(_options) {
@@ -34,7 +34,7 @@
     text: ['Precios diarios de la luz']
   },
   subtitle: {
-    text: mondiv.toString()
+    text: mondiv
   },
   credits: {
     enabled: false
