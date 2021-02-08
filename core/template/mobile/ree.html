@@ -1,0 +1,55 @@
+<div class="cmd cmd-widget #history#" data-type="info" data-subtype="string" data-template="default" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
+
+<span class="cmdName #hide_name#">#name_display# </span><strong class="state" ></strong>
+<div class="grafica #history#" data-cmd_id="#id#"></div>
+<script>
+  var type#id# = ('#type#' !='#'+'type#') ? "#type#":"column";
+  jeedom.cmd.update['#id#'] = function(_options) {
+    $('.cmd[data-cmd_id=#id#]').attr('title','{{Date de valeur}} : '+_options.valueDate+'<br/>{{Date de collecte}} : '+_options.collectDate);
+    if ($('.cmd[data-cmd_uid=#uid#] .grafica').highcharts() !== undefined) {
+      $('.cmd[data-cmd_uid=#uid#] .grafica').highcharts().series[0].points[0].update(_options.display_value)
+    }
+  }
+     $('.cmd[data-cmd_uid=#uid#] .grafica').empty().highcharts({
+      chart: {
+    animation: true,
+    events: {
+      load: function() {
+        var series = this.series[0];
+        series.points[series.yData.indexOf(series.dataMin)].update({
+          color: 'green'
+        });
+        series.points[series.yData.indexOf(series.dataMax)].update({
+          color: 'red'
+        });
+      }
+    }
+  },
+  title: {
+    text: ['Precios diarios de la luz']
+  },
+  subtitle: {
+    text: ['Fuente: Red Electrica de España']
+  },
+  credits: {
+    enabled: false
+  },
+  xAxis: {
+   title: {
+     text:'Horas'},
+   categories: ['00h','01h', '02h', '03h', '04h', '05h', '06h', '07h', '08h', '09h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h']
+  },
+  yAxis: {
+   title: {
+     text: 'Euros'
+    }
+  },
+  series: [{
+    name: 'Precio KWh',
+    type: [type#id#],
+    data: [#state#]
+  }]
+});
+jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'})
+</script>
+</div>
