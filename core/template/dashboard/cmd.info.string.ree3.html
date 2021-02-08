@@ -3,10 +3,9 @@
 <span class="cmdName #hide_name#">#name_display# </span><strong class="state" ></strong>
 <div class="grafica #history#" data-cmd_id="#id#"></div>
 <script>
-  var mondiv;
   jeedom.cmd.execute({ id: '712',
         success:  function(resultat) {          
-         mondiv= _options.display_value;
+         var mondiv= resultat;
    }
 });
   jeedom.cmd.update['#id#'] = function(_options) {
