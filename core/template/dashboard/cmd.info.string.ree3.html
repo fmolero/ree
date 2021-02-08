@@ -3,7 +3,7 @@
 <span class="cmdName #hide_name#">#name_display# </span><strong class="state" ></strong>
 <div class="grafica #history#" data-cmd_id="#id#"></div>
 <script>
-  var mondiv= document.getElementById("mdiv");
+  var mondiv;
   jeedom.cmd.execute({ id: '712',
         success:  function(resultat) {          
          mondiv= resultat.toString();
