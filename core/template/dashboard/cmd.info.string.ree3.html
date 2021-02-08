@@ -3,9 +3,9 @@
 <span class="cmdName #hide_name#">#name_display# </span><strong class="state" ></strong>
 <div class="grafica #history#" data-cmd_id="#id#"></div>
 <script>
-  var tipo = ('#type#' =='') ? "column":"#type#";  // taille du cadran
+  var type#id# = ('#type#' !='#'+'type#') ? "#type#":"bar";
   jeedom.cmd.update['#id#'] = function(_options) {
-    $('.cmd[data-cmd_id=#id#]').attr('title','{{Date de valeur}} : '+_options.valueDate+'<br/>{{Date de collecte}} : '+_options.collectDate)
+    $('.cmd[data-cmd_id=#id#]').attr('title','{{Date de valeur}} : '+_options.valueDate+'<br/>{{Date de collecte}} : '+_options.collectDate);
     if ($('.cmd[data-cmd_uid=#uid#] .grafica').highcharts() !== undefined) {
       $('.cmd[data-cmd_uid=#uid#] .grafica').highcharts().series[0].points[0].update(_options.display_value)
     }
@@ -46,8 +46,7 @@
   },
   series: [{
     name: 'Precio KWh',
-    //type: ['#type#'],
-    type: [tipo],
+    type: [type#id#],
     data: [#state#]
   }]
 });
