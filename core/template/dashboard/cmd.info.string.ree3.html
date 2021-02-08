@@ -6,7 +6,7 @@
   var valeur1;
     jeedom.cmd.execute({ id: '712',
           success:  function(resultat) {   
-            valeur1 = resultat;
+            valeur1 = String(resultat);
   }});
   jeedom.cmd.update['#id#'] = function(_options) {
     $('.cmd[data-cmd_id=#id#]').attr('title','{{Date de valeur}} : '+_options.valueDate+'<br/>{{Date de collecte}} : '+_options.collectDate)
@@ -33,7 +33,7 @@
     text: ['Precios diarios de la luz']
   },
   subtitle: {
-    text: ['Fuente: Red Electrica de España ' valeur1]
+    text: [valeur1]
   },
   credits: {
     enabled: false
