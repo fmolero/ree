@@ -3,6 +3,11 @@
 <span class="cmdName #hide_name#">#name_display# </span><strong class="state" ></strong>
 <div class="grafica #history#" data-cmd_id="#id#"></div>
 <script>
+  var valeur1;
+    jeedom.cmd.execute({ id: '712',
+          success:  function(resultat) {   
+            valeur1 = resultat;
+  }});
   jeedom.cmd.update['#id#'] = function(_options) {
     $('.cmd[data-cmd_id=#id#]').attr('title','{{Date de valeur}} : '+_options.valueDate+'<br/>{{Date de collecte}} : '+_options.collectDate)
     if ($('.cmd[data-cmd_uid=#uid#] .grafica').highcharts() !== undefined) {
@@ -28,7 +33,7 @@
     text: ['Precios diarios de la luz']
   },
   subtitle: {
-    text: ['Fuente: Red Electrica de España #712#']
+    text: ['Fuente: Red Electrica de España ' valeur1]
   },
   credits: {
     enabled: false
