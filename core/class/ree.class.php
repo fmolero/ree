@@ -321,13 +321,13 @@ class reeCmd extends cmd {
 		$seltaux = $eqLogic->getConfiguration('taux');
                 switch ($seltaux) {
  		 case "PVPC":
-        		$taux = "1013";
+        		$taux = "1003";
         		break;
     		case "PVPC 2.0 DHA":
-        		$taux = "1014";
+        		$taux = "1004";
         		break;
     		case "PVPC 2.0 DHS":
-        		$taux = "1015";
+        		$taux = "1005";
         		break;
 		}
                 $headers = array(
