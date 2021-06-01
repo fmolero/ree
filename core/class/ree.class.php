@@ -337,7 +337,7 @@ class reeCmd extends cmd {
                         "Authorization: Token token=" . $token,
                         "Cookie: "
                 );
-                curl_setopt($ch, CURLOPT_URL,"https://api.esios.ree.es/indicators/" . $taux . "?start_date=" . $fecha_siguiente . "T00:00:00&end_date=" . $fecha_siguiente . "T23:50:00");
+                curl_setopt($ch, CURLOPT_URL,"https://api.esios.ree.es/indicators/" . $taux . "?geo_ids[]=8741&start_date=" . $fecha_siguiente . "T00:00:00&end_date=" . $fecha_siguiente . "T23:50:00");
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                 $response = curl_exec($ch);
