@@ -300,10 +300,10 @@ class reeCmd extends cmd {
         		$taux = "1001";
         		break;
     		case "PVPC 2.0 DHA":
-        		$taux = "1014";
+        		$taux = "1002";
         		break;
     		case "PVPC 2.0 DHS":
-        		$taux = "1015";
+        		$taux = "1003";
         		break;
 		}
                 $headers = array(
