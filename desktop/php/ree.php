@@ -111,9 +111,8 @@ foreach (jeeObject::all() as $object) {
               <label class="col-sm-3 control-label">{{Tarifa}}</label>
               <div class="col-sm-3">
                 <select id="sel_taux" class="form-control eqLogicAttr" data-l1key="configuration" data-l2key="taux">
-                  <option value="PVPC">{{PVPC}}</option>
-                  <option value="PVPC 2.0 DHA">{{PVPC 2.0 DHA}}</option>
-                  <option value="PVPC 2.0 DHS">{{PVPC 2.0 DHS}}</option>
+                  <option value="PVPC 2.0TD">{{PVPC 2.0TD}}</option>
+                  
 		 </select>
               </div>
 
