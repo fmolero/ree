@@ -322,15 +322,15 @@ class reeCmd extends cmd {
                 //$eqLogic = $this->getEqLogic();
 		$seltaux = $eqLogic->getConfiguration('taux');
                 switch ($seltaux) {
- 		 case "PVPC":
-        		$taux = "1013";
+ 		 case "PVPC 2.0TD":
+        		$taux = "1001";
         		break;
-    		case "PVPC 2.0 DHA":
-        		$taux = "1014";
-        		break;
-    		case "PVPC 2.0 DHS":
-        		$taux = "1015";
-        		break;
+    		//case "PVPC 2.0 DHA":
+        	//	$taux = "1014";
+        	//	break;
+    		//case "PVPC 2.0 DHS":
+        	//	$taux = "1015";
+        	//	break;
 		}
                 $headers = array(
                         "Accept: application/json; application/vnd.esios-api-v1+json",
@@ -339,7 +339,7 @@ class reeCmd extends cmd {
                         "Authorization: Token token=" . $token,
                         "Cookie: "
                 );
-                curl_setopt($ch, CURLOPT_URL,"https://api.esios.ree.es/indicators/" . $taux . "?start_date=" . $fecha_siguiente . "T00:00:00&end_date=" . $fecha_siguiente . "T23:50:00");
+                curl_setopt($ch, CURLOPT_URL,"https://api.esios.ree.es/indicators/" . $taux . "?geo_ids[]=8741&start_date=" . $fecha_siguiente . "T00:00:00&end_date=" . $fecha_siguiente . "T23:50:00");
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                 $response = curl_exec($ch);
