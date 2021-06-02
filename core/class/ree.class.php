@@ -296,15 +296,15 @@ class reeCmd extends cmd {
                 //$eqLogic = $this->getEqLogic();
 		$seltaux = $eqLogic->getConfiguration('taux');
                 switch ($seltaux) {
- 		 case "PVPC 2.0TD":
+ 		 case "PVPC":
         		$taux = "1001";
         		break;
-    		//case "PVPC 2.0 DHA":
-        	//	$taux = "1014";
-        	//	break;
-    		//case "PVPC 2.0 DHS":
-        	//	$taux = "1015";
-        	//	break;
+    		case "PVPC 2.0 DHA":
+        		$taux = "1014";
+        		break;
+    		case "PVPC 2.0 DHS":
+        		$taux = "1015";
+        		break;
 		}
                 $headers = array(
                         "Accept: application/json; application/vnd.esios-api-v1+json",
