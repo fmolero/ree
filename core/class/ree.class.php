@@ -330,6 +330,58 @@ class reeCmd extends cmd {
         	//	$taux = "1005";
         	//	break;
 		}
+        
+                #==============================================
+                # FJMG 2021-04-27 Logging of the 3 tariffs
+                #==============================================
+                $headers = array(
+                        "Accept: application/json; application/vnd.esios-api-v1+json",
+                        "Content-Type: application/json",
+                        "Host: api.esios.ree.es",
+                        "Authorization: Token token=" . $token,
+                        "Cookie: "
+                );
+                curl_setopt($ch, CURLOPT_URL,"https://api.esios.ree.es/indicators/1013?start_date=" . $fecha_siguiente . "T00:00:00&end_date=" . $fecha_siguiente . "T23:50:00");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                $response = curl_exec($ch);
+                curl_close($ch);
+                $obj=json_decode($response,true);
+		// Imprime el JSON en el log para poder consultarlo
+		log::add('ree', 'debug', 'Datos json: ' . print_r($response, True));
+
+                $headers = array(
+                        "Accept: application/json; application/vnd.esios-api-v1+json",
+                        "Content-Type: application/json",
+                        "Host: api.esios.ree.es",
+                        "Authorization: Token token=" . $token,
+                        "Cookie: "
+                );
+                curl_setopt($ch, CURLOPT_URL,"https://api.esios.ree.es/indicators/1014?start_date=" . $fecha_siguiente . "T00:00:00&end_date=" . $fecha_siguiente . "T23:50:00");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                $response = curl_exec($ch);
+                curl_close($ch);
+                $obj=json_decode($response,true);
+		// Imprime el JSON en el log para poder consultarlo
+		log::add('ree', 'debug', 'Datos json: ' . print_r($response, True));
+
+                $headers = array(
+                        "Accept: application/json; application/vnd.esios-api-v1+json",
+                        "Content-Type: application/json",
+                        "Host: api.esios.ree.es",
+                        "Authorization: Token token=" . $token,
+                        "Cookie: "
+                );
+                curl_setopt($ch, CURLOPT_URL,"https://api.esios.ree.es/indicators/1015?start_date=" . $fecha_siguiente . "T00:00:00&end_date=" . $fecha_siguiente . "T23:50:00");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                $response = curl_exec($ch);
+                curl_close($ch);
+                $obj=json_decode($response,true);
+		// Imprime el JSON en el log para poder consultarlo
+		log::add('ree', 'debug', 'Datos json: ' . print_r($response, True));
+                #==============================================
                 $headers = array(
                         "Accept: application/json; application/vnd.esios-api-v1+json",
                         "Content-Type: application/json",
