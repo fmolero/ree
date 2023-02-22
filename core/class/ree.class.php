@@ -334,7 +334,8 @@ class reeCmd extends cmd {
                         "Accept: application/json; application/vnd.esios-api-v1+json",
                         "Content-Type: application/json",
                         "Host: api.esios.ree.es",
-                        "Authorization: Token token=" . $token,
+                //        "Authorization: Token token=" . $token,
+			"x-api-key:" . $token,
                         "Cookie: "
                 );
                 curl_setopt($ch, CURLOPT_URL,"https://api.esios.ree.es/indicators/" . $taux . "?geo_ids[]=8741&start_date=" . $fecha_siguiente . "T00:00:00&end_date=" . $fecha_siguiente . "T23:50:00");
